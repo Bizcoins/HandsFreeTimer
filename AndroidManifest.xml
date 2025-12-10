@@ -1,0 +1,15 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.1.1 # Version might change, but this is the package
+
+  # Essential Native Plugins for Your App:
+  url_launcher: ^6.2.2          # For the "Contact Developer" email button
+  wakelock_plus: ^1.2.0         # Prevents screen from locking (Wake Lock)
+  sensors_plus: ^5.0.0          # Accesses the Proximity Sensor
+  volume_controller: ^2.2.0     # Listens for Volume Button presses
+  flutter_foreground_task: ^6.1.1 # Keeps the timer running in the background (Foreground Service)
+
+  # ... other packages like cupertino_icons
