@@ -22,12 +22,12 @@
   
   # Inject an execution script that runs after the environment is built.
   # This explicitly exports the variables to the shell.
-  shellHook = '''
+  shellHook = ''
     export ANDROID_SDK_ROOT="${pkgs.android-tools}/libexec/android-sdk"
     export ANDROID_HOME="${pkgs.android-tools}/libexec/android-sdk"
     export PATH="$PATH:$ANDROID_HOME/platform-tools"
     echo "Android SDK paths exported successfully!"
-  ''';
+  '';
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
