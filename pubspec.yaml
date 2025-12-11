@@ -30,3 +30,8 @@ dependencies:
   just_audio: ^0.9.36
 
   cupertino_icons: ^1.0.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/ # This line includes the new assets directory

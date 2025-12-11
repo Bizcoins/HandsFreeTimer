@@ -6,15 +6,28 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    # pkgs.go
-    # pkgs.python311
-    # pkgs.python311Packages.pip
     pkgs.nodejs_20
-    # pkgs.nodePackages.nodemon
+    pkgs.flutter
+    pkgs.jdk
+    pkgs.zlib
+    pkgs.android-tools # Your successfully installed Android package
   ];
 
-  # Sets environment variables in the workspace
-  env = {};
+  # This section sets the necessary environment variables for Flutter/Android
+  env = {
+    # Keep the env block for completeness, but the shellHook is the key fix
+    ANDROID_SDK_ROOT = "${pkgs.android-tools}/libexec/android-sdk";
+    ANDROID_HOME = "${pkgs.android-tools}/libexec/android-sdk";
+  };
+  
+  # Inject an execution script that runs after the environment is built.
+  # This explicitly exports the variables to the shell.
+  shellHook = '''
+    export ANDROID_SDK_ROOT="${pkgs.android-tools}/libexec/android-sdk"
+    export ANDROID_HOME="${pkgs.android-tools}/libexec/android-sdk"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools"
+    echo "Android SDK paths exported successfully!"
+  ''';
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
