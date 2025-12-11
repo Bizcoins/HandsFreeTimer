@@ -268,33 +268,33 @@ const App = () => {
   }
 
   return (
-    <div className={`min-h-screen p-4 sm:p-8 bg-${settings.theme}-50 transition-colors duration-500`}>
+    <div className={`min-h-screen p-6 sm:p-12 bg-${settings.theme}-50 transition-colors duration-500`}>
       <script src="https://cdn.tailwindcss.com"></script>
-      <div className="max-w-xl mx-auto space-y-8 p-6 bg-white shadow-xl rounded-xl">
+      <div className="max-w-4xl mx-auto space-y-10 p-8 bg-white shadow-2xl rounded-2xl">
         
         {/* Header */}
         <header className="text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900">Hands-Free Timer</h1>
-          <p className="text-sm text-gray-500">User ID: <span className="font-mono text-xs break-all">{userId}</span></p>
+          <h1 className="text-4xl font-extrabold text-gray-900">Hands-Free Timer</h1>
+          <p className="text-base text-gray-500 mt-2">User ID: <span className="font-mono text-sm break-all">{userId}</span></p>
         </header>
 
         {/* Message Alert */}
         {message && (
-          <div className="p-3 text-sm font-medium rounded-lg text-indigo-700 bg-indigo-100" role="alert">
+          <div className="p-4 text-base font-medium rounded-xl text-indigo-800 bg-indigo-100" role="alert">
             {message}
           </div>
         )}
 
         {/* Timer Settings Card */}
-        <section className="p-5 border border-indigo-200 rounded-lg space-y-4 shadow-md">
-          <h2 className="text-xl font-semibold text-indigo-600 flex items-center">
-            <RefreshCw className="w-5 h-5 mr-2"/> Current Settings
+        <section className="p-6 border border-indigo-200 rounded-xl space-y-6 shadow-lg">
+          <h2 className="text-2xl font-semibold text-indigo-700 flex items-center">
+            <RefreshCw className="w-6 h-6 mr-3"/> Current Settings
           </h2>
           
           {/* Duration Slider */}
           <div>
-            <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-2">
-              Timer Duration: <span className="font-bold text-indigo-600">{formatTime(settings.timerDuration)}</span>
+            <label htmlFor="duration" className="block text-base font-medium text-gray-800 mb-3">
+              Timer Duration: <span className="font-bold text-indigo-700 text-lg">{formatTime(settings.timerDuration)}</span>
             </label>
             <input
               id="duration"
@@ -304,14 +304,14 @@ const App = () => {
               step="30"
               value={settings.timerDuration}
               onChange={(e) => updateSetting('timerDuration', parseInt(e.target.value))}
-              className={`w-full h-2 bg-indigo-100 rounded-lg appearance-none cursor-pointer range-lg accent-indigo-600`}
+              className={`w-full h-3 bg-indigo-100 rounded-full appearance-none cursor-pointer range-lg accent-indigo-600`}
             />
           </div>
 
           {/* Volume Slider */}
           <div>
-            <label htmlFor="volume" className="block text-sm font-medium text-gray-700 mb-2">
-              Volume: <span className="font-bold text-indigo-600">{(settings.volume * 100).toFixed(0)}%</span>
+            <label htmlFor="volume" className="block text-base font-medium text-gray-800 mb-3">
+              Volume: <span className="font-bold text-indigo-700 text-lg">{(settings.volume * 100).toFixed(0)}%</span>
             </label>
             <input
               id="volume"
@@ -321,20 +321,20 @@ const App = () => {
               step="0.1"
               value={settings.volume}
               onChange={(e) => updateSetting('volume', parseFloat(e.target.value))}
-              className={`w-full h-2 bg-indigo-100 rounded-lg appearance-none cursor-pointer range-lg accent-indigo-600`}
+              className={`w-full h-3 bg-indigo-100 rounded-full appearance-none cursor-pointer range-lg accent-indigo-600`}
             />
           </div>
           
           {/* Theme Selector */}
           <div>
-            <label htmlFor="theme" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="theme" className="block text-base font-medium text-gray-800 mb-3">
               App Theme:
             </label>
             <select
               id="theme"
               value={settings.theme}
               onChange={(e) => updateSetting('theme', e.target.value)}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              className="mt-1 block w-full pl-4 pr-12 py-3 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base rounded-lg shadow-sm"
             >
               <option value="blue">Blue (Default)</option>
               <option value="emerald">Emerald</option>
@@ -347,33 +347,33 @@ const App = () => {
 
 
         {/* Backup and Restore Section */}
-        <section className="p-5 border border-gray-300 rounded-lg space-y-4 shadow-md bg-gray-50">
-          <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-            <FileDown className="w-5 h-5 mr-2"/> Data Backup & Restore
+        <section className="p-6 border border-gray-300 rounded-xl space-y-6 shadow-lg bg-gray-50">
+          <h2 className="text-2xl font-semibold text-gray-800 flex items-center">
+            <FileDown className="w-6 h-6 mr-3"/> Data Backup & Restore
           </h2>
 
           {/* Export/Backup Button */}
           <button
             onClick={exportDataToJSON}
             disabled={loading}
-            className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 transition duration-150"
+            className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-60 transition duration-150"
           >
-            {loading ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : <Download className="w-5 h-5 mr-2" />}
+            {loading ? <Loader2 className="w-6 h-6 mr-3 animate-spin" /> : <Download className="w-6 h-6 mr-3" />}
             Export Settings to JSON
           </button>
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-sm text-gray-600 text-center">
             {settings.lastBackupDate 
               ? `Last successful backup: ${new Date(settings.lastBackupDate).toLocaleDateString()} at ${new Date(settings.lastBackupDate).toLocaleTimeString()}`
               : 'No backup recorded yet.'}
           </p>
 
-          <div className="relative border-t pt-4 border-gray-200">
+          <div className="relative border-t pt-6 border-gray-200">
             {/* Import/Restore Input */}
             <label 
               htmlFor="file-upload" 
-              className="w-full flex items-center justify-center px-4 py-2 border border-gray-400 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer disabled:opacity-50 transition duration-150"
+              className="w-full flex items-center justify-center px-6 py-3 border border-gray-400 text-base font-medium rounded-xl text-gray-800 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer disabled:opacity-60 transition duration-150"
             >
-              {loading ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : <Upload className="w-5 h-5 mr-2" />}
+              {loading ? <Loader2 className="w-6 h-6 mr-3 animate-spin" /> : <Upload className="w-6 h-6 mr-3" />}
               Restore Settings from JSON
             </label>
             <input
@@ -384,7 +384,7 @@ const App = () => {
               disabled={loading}
               className="sr-only"
             />
-            <p className="text-xs text-gray-500 mt-1 text-center">
+            <p className="text-sm text-gray-600 mt-2 text-center">
               Uploading a file will overwrite your current settings.
             </p>
           </div>
